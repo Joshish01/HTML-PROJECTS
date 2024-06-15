@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator, Alert, Confirm, and Prompt</title>
+</head>
+<body>
+    <div>
+        <h3>Alert Box</h3>
+        <input type="button" onclick="myAlert()" value="Alert">
+    </div>
+    <div>
+        <h3>Confirm Box</h3>
+        <input type="button" onclick="myFunction()" value="Confirm">
+    </div>
+    <div>
+        <h3>Prompt Box</h3>
+        <button onclick="myPrompt()">Prompt</button>
+    </div>
+
+    <h2>Simple Calculator</h2>
+    <div>
+        <input type="text" id="num1" placeholder="Enter first number">
+        <input type="text" id="num2" placeholder="Enter second number">
+    </div>
+    <div>
+        <button onclick="calculate('add')">+</button>
+        <button onclick="calculate('subtract')">-</button>
+        <button onclick="calculate('multiply')">*</button>
+        <button onclick="calculate('divide')">/</button>
+    </div>
+    <div>
+        <input type="text" id="result">
+    </div>
+
+    <script>
+        function myAlert() {
+            alert("Welcome to my first JavaScript");
+        }
+
+        function myFunction() {
+            if (confirm("Press a button!") == true) {
+                alert("You pressed OK!");
+            } else {
+                alert("You pressed Cancel!");
+            }
+        }
+
+        function myPrompt() {
+            var myInput = prompt("Enter a number: ");
+            if (myInput !== null) {
+                alert(myInput == "2" ? "Your choice is number two" : "Input again");
+            }
+        }
+
+        function calculate(operation) {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var result;
+
+            switch (operation) {
+                case 'add':
+                    result = num1 + num2;
+                    break;
+                case 'subtract':
+                    result = num1 - num2;
+                    break;
+                case 'multiply':
+                    result = num1 * num2;
+                    break;
+                case 'divide':
+                    if (num2 === 0) {
+                        alert("Cannot divide by zero.");
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+                default:
+                    alert("Invalid operation.");
+                    return;
+            }
+
+            document.getElementById('result').value = result;
+        }
+    </script>
+</body>
+</html>
